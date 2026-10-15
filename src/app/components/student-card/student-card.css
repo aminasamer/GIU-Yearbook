@@ -1,0 +1,65 @@
+/* =====================================================================
+   FILE: src/app/components/student-card/student-card.css
+   WHAT: Styles for one student card.
+   WHY:  Scoped to this component, so these rules never leak to other pages.
+   ===================================================================== */
+
+/* The whole card: a white box with the photo clipped to its corners */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+/* Lift the card slightly on hover so it feels clickable */
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+/* Same photo shape at any width: crop the extra, never stretch */
+.card__photo {
+  width: 100%;
+  aspect-ratio: 310 / 246;
+  object-fit: cover;
+}
+/* White area under the photo: a column of text with even spacing */
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+/* Name on the left, arrow on the right, on one row */
+.card__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__name {
+  font: 600 19px/1.2 var(--font-sans);
+}
+
+/* The arrow inherits this color through currentColor in the SVG */
+.card__arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--color-red);
+}
+
+/* Small gray uppercase line: faculty and class year */
+.card__meta {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.card__quote {
+  font: italic 400 17px/1.4 var(--font-serif);
+}

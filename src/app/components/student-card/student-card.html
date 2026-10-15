@@ -1,4 +1,27 @@
+<!-- =====================================================================
+     FILE: src/app/components/student-card/student-card.html
+     WHAT: The markup of one student card: photo, name, arrow, meta, quote.
+     WHY:  Each piece has its own class so it can be styled separately.
+     ===================================================================== -->
 <a class="card" [routerLink]="['/students', student().id]"
    [attr.aria-label]="'Read the story of ' + student().name">
-  <h3>{{ student().name }}</h3>
+
+    <img class="card__photo" [src]="photoSrc()"
+       [alt]="'Portrait of ' + student().name" loading="lazy"
+       (error)="onImageError()">
+
+  <div class="card__body">
+    <!-- Name and arrow share one row -->
+    <div class="card__heading">
+      <h3 class="card__name">{{ student().name }}</h3>
+      <svg class="card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <path d="M7 17 17 7M8 7h9v9" />
+      </svg>
+    </div>
+
+    <p class="card__meta">{{ student().faculty }} · Class of {{ student().classYear }}</p>
+    <p class="card__quote">“{{ student().quote }}”</p>
+  </div>
 </a>
