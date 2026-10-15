@@ -1,0 +1,4 @@
+<a class="card" [routerLink]="['/students', student().id]"
+   [attr.aria-label]="'Read the story of ' + student().name">
+  <h3>{{ student().name }}</h3>
+</a>
